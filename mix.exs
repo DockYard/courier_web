@@ -7,6 +7,7 @@ defmodule CourierWeb.Mixfile do
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     description: description(),
      deps: deps]
   end
 
@@ -15,6 +16,17 @@ defmodule CourierWeb.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [applications: [:logger]]
+  end
+
+  def description do
+    "Web client adapter for Courier"
+  end
+
+  def package do
+    [maintainers: ["Brian Cardarella"],
+     licenses: ["MIT"],
+     links: %{"GitHub" => "https://github.com/DockYard/courier_web"}
+     ]
   end
 
   # Dependencies can be Hex packages:
