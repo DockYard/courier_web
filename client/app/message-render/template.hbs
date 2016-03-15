@@ -1,0 +1,10 @@
+{{#if raw}}
+{{headers-render headers=message.headers}}
+{{#each message.parts as |part|}}
+{{message-render message=part}}
+{{else}}
+  {{message.body}}
+{{/each}}
+{{else}}
+  {{body}}
+{{/if}}

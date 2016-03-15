@@ -1,0 +1,9 @@
+{{#if display}}
+  <ul>
+  {{#each-in headers as |key value|}}
+    <li>{{key}}: {{header}}</li>
+  {{/each-in}}
+  </ul>
+{{else}}
+  Show Headers
+{{/if}}

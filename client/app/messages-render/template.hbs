@@ -1,0 +1,20 @@
+<table class="highlight">
+  <thead>
+    <tr>
+      <th>{{displayColName}}</th>
+      <th>Subject</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each messages as |message|}}
+      {{#link-to 'contact.message' message tagName="tr"}}
+        <td></td>
+        <td>{{message.subject}}</td>
+        <td>{{message.date}}</td>
+      {{/link-to}}
+    {{else}}
+      No messages!
+    {{/each}}
+  </tbody>
+</table>
