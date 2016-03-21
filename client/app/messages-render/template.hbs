@@ -1,20 +1,24 @@
-<table class="highlight">
-  <thead>
-    <tr>
-      <th>{{displayColName}}</th>
-      <th>Subject</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each messages as |message|}}
-      {{#link-to 'contact.message' message tagName="tr"}}
-        <td></td>
-        <td>{{message.subject}}</td>
-        <td>{{message.date}}</td>
-      {{/link-to}}
-    {{else}}
-      No messages!
-    {{/each}}
-  </tbody>
-</table>
+{{#if messages}}
+  <table class="highlight">
+    <thead>
+      <tr>
+        <th>{{displayColName}}</th>
+        <th>Subject</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody class="messages">
+      {{#each messages as |message|}}
+        {{#link-to messagePath message tagName="tr" class="link-row"}}
+          <td>{{get message displayColPath}}</td>
+          <td>{{message.subject}}</td>
+          <td>{{message.date}}</td>
+        {{/link-to}}
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <div class="no-messages">
+    <h5 class="center light">No Messages!</h5>
+  </div>
+{{/if}}

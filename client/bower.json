@@ -5,6 +5,10 @@
     "ember-cli-shims": "0.1.0",
     "ember-cli-test-loader": "0.2.2",
     "ember-qunit-notifications": "0.1.0",
-    "materialize": "~0.97.0"
+    "materialize": "mike-north/materialize#bower-fix",
+    "material-design-icons": "^2.2.1",
+    "hammer-time": "1.0.0",
+    "hammer.js": "2.0.6",
+    "js-md5": "md5#^0.3.0"
   }
 }

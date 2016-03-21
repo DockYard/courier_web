@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Resolver from 'ember/resolver';
+import Resolver from './resolver';
 import loadInitializers from 'ember/load-initializers';
 import config from './config/environment';
 
@@ -12,6 +12,12 @@ App = Ember.Application.extend({
   podModulePrefix: config.podModulePrefix,
   Resolver
 });
+
+if (config.environment !== 'production') {
+  Ember.Component.reopen({
+    attributeBindings: ['data-test']
+  });
+}
 
 loadInitializers(App, config.modulePrefix);
 

@@ -7,9 +7,9 @@ defmodule Courier.Adapters.Web do
   Before delivery a UUID is injected into the message header's `id` field. After
   which it delegates delivery to `Courier.Adapters.Agent.delivery/2`
   """
-  def deliver(%Mail.Message{} = message, config) do
+  def deliver(%Mail.Message{} = message, opts) do
     message
     |> Mail.Message.put_header(:id, UUID.uuid1())
-    |> super(config)
+    |> super(opts)
   end
 end

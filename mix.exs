@@ -5,9 +5,13 @@ defmodule CourierWeb.Mixfile do
     [app: :courier_web,
      version: "0.0.1",
      elixir: "~> 1.2",
+     elixirc_paths: elixirc_paths(),
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      description: description(),
+     aliases: ["test.all": ["test", "test.client"],
+               "test.client": &test_client/1],
+     preferred_cli_env: ["test.all": :test, "test.client": :test],
      deps: deps]
   end
 
@@ -17,6 +21,8 @@ defmodule CourierWeb.Mixfile do
   def application do
     [applications: [:logger]]
   end
+
+  defp elixirc_paths(), do: ["lib", "priv"]
 
   def description do
     "Web client adapter for Courier"
@@ -39,11 +45,16 @@ defmodule CourierWeb.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:courier, path: "../courier"},
+    [{:courier, "~> 0.0.2"},
      {:uuid, "~> 1.1"},
      {:plug, "~> 1.1.2"},
      {:ja_serializer, "~> 0.7.1"},
      {:poison, "~> 1.5"}
      ]
+  end
+
+  defp test_client(_args) do
+    System.cmd("ember", ["test"], cd: "client")
+    |> IO.inspect()
   end
 end

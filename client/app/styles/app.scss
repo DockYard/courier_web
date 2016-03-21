@@ -1,2 +1,70 @@
-@import 'materialize';
-@import 'ember-cli-materialize';
+$roboto-font-path: '/assets/';
+@import "materialize";
+
+tr.link-row:hover {
+  cursor: pointer;
+}
+
+code.raw {
+  white-space: pre-wrap;
+}
+
+.message p.body {
+  margin-top: 30px;
+}
+
+.message span.header {
+  display: block;
+}
+
+.message span.header.from {
+  font-weight: bold;
+}
+
+.message span.header.to {
+  color: #777;
+}
+
+.row.no-bottom-margin {
+  margin-bottom: 0px;
+}
+
+img.avatar {
+  background: white;
+  height: 80px;
+  width: 80px;
+  padding: 3px;
+  border: 1px solid #bbb;
+}
+
+.sign-in-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in {
+  padding: 25px, 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+}
+
+.sign-in input {
+  text-align: center;
+}
+
+.sign-in .bumper {
+  min-height: 25px;
+}
+
+.no-messages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+}
