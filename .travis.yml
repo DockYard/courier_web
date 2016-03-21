@@ -10,8 +10,6 @@ cache:
   directories:
     - _build
     - deps
-    - client/node_modules
-    - client/bower_components
     - client_test_server/deps
     - client_test_server/_build
 before_install:

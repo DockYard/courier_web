@@ -3,7 +3,7 @@ defmodule CourierWeb.Mixfile do
 
   def project do
     [app: :courier_web,
-     version: "0.0.3",
+     version: "0.0.5",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(),
      build_embedded: Mix.env == :prod,
