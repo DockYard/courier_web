@@ -9,9 +9,6 @@ defmodule CourierWeb.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      description: description(),
-     aliases: ["test.all": ["test", "test.client"],
-               "test.client": &test_client/1],
-     preferred_cli_env: ["test.all": :test, "test.client": :test],
      deps: deps]
   end
 
@@ -46,15 +43,10 @@ defmodule CourierWeb.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [{:courier, "~> 0.0.2"},
-     {:uuid, "~> 1.1"},
-     {:plug, "~> 1.1.2"},
-     {:ja_serializer, "~> 0.7.1"},
-     {:poison, "~> 1.5"}
+     {:uuid, "> 0.0.0"},
+     {:plug, "> 0.0.0"},
+     {:ja_serializer, "> 0.0.0"},
+     {:poison, "> 0.0.0"}
      ]
-  end
-
-  defp test_client(_args) do
-    System.cmd("ember", ["test"], cd: "client")
-    |> IO.inspect()
   end
 end
