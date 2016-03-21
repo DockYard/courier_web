@@ -1,0 +1,22 @@
+{{#if icon}}
+<i class="material-icons prefix">{{icon}}</i>
+{{/if}}
+{{input
+  value=value
+  id=_inputId
+  type=type
+  placeholder=placeholder
+  disabled=disabled
+  class="{{_classesForInput}} {{_validateClass}}"
+  onkeyup=(action 'onKeyUp')
+  onkeydown=(action 'onKeyDown')
+  onchange=(action 'onChange')
+  onblur=(action 'onBlur')
+  enter=attrs.enter}}
+<label
+  for={{_inputId}}
+  class="{{labelClass}} {{if active 'active'}}"
+  data-error={{error}}>
+  {{label}}
+</label>
+{{yield}}

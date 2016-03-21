@@ -1,0 +1,15 @@
+<div class="section">
+  <h5 class="subject">{{message.subject}}</h5>
+  <div class="divider"></div>
+  <span class="header from">{{message.from.tableName}}</span>
+  <span class="header to">to {{message-recipients message}}</span>
+  <p class="body">{{{body}}}</p>
+</div>
+{{#if message.attachments}}
+<div class="divider"></div>
+<div class="section">
+  {{#each message.attachments as |attachment|}}
+    {{message-render/rich/attachment attachment=attachment}}
+  {{/each}}
+</div>
+{{/if}}

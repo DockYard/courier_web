@@ -1,10 +1,33 @@
+<div class="row" class="right">
 {{#if raw}}
-{{headers-render headers=message.headers}}
-{{#each message.parts as |part|}}
-{{message-render message=part}}
+  {{md-btn icon="code" data-test="message-display" iconClass="center" on-click=(action "toggleDisplay")}}
 {{else}}
-  {{message.body}}
-{{/each}}
+  {{md-btn icon="subject" data-test="message-display" iconClass="center" on-click=(action "toggleDisplay")}}
+{{/if}}
+
+{{md-btn icon="delete" data-test="message-delete" iconClass="center" on-click=(toggle "deleteModal" this) class="red darken-1"}}
+</div>
+
+<div class="row">
+{{#if raw}}
+  {{message-render/raw content=message.raw}}
 {{else}}
-  {{body}}
+  {{message-render/rich message=message}}
+{{/if}}
+</div>
+
+{{#if deleteModal}}
+  {{#md-dialog on-close=(toggle "deleteModal" this) as |d|}}
+    <div class="modal-content">
+      Are you sure you want to delete?
+    </div>
+    {{#d.footer as |f|}}
+      {{#f.btn data-test="delete-cancel" class="left grey darken-2" on-click=(toggle "deleteModal" this)}}
+        Cancel
+      {{/f.btn}}
+      {{#f.btn data-test="delete-confirm" class="red darken-2" on-click=(route-action "deleteMessage")}}
+        Confirm
+      {{/f.btn}}
+    {{/d.footer}}
+  {{/md-dialog}}
 {{/if}}

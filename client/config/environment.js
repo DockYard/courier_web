@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'client',
     environment: environment,
-    baseURL: '/',
+    dataTest: true,
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
@@ -16,13 +16,11 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    },
-    sassOptions: {
-      includePaths: ['bower_components/materialize/sass']
     }
   };
 
   if (environment === 'development') {
+    ENV.baseURL = '/';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -43,7 +41,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.dataTest = false;
   }
 
   return ENV;

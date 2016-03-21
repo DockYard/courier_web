@@ -1,0 +1,21 @@
+<div class="sign-in-container">
+  <h5 class="light">Search for the account</h5>
+  {{#md-form class="card-panel grey lighten-4 sign-in" as |f|}}
+    <div class="bumper">
+      {{name}}
+    </div>
+    <div>
+      {{gravatar-img email=email}}
+    </div>
+    <div>
+      {{md-input enter=(route-action "go" account) value=email label="Email"}}
+    </div>
+    <div>
+      {{#md-btn click=(route-action "go" account) disabled=(not account)}}
+        Go!
+      {{/md-btn}}
+    </div>
+    <div class="bumper">
+    </div>
+  {{/md-form}}
+</div>

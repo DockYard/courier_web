@@ -6,10 +6,13 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('contact', { path: '/:contact_id' }, function() {
-    this.route('inbox');
-    this.route('sent');
-    this.route('message', { path: '/messsages/:message_id' });
+  this.route('account', { path: '/:account_id' }, function() {
+    this.route('inbox', function() {
+      this.route('message', { path: '/:message_id' });
+    });
+    this.route('sent', function() {
+      this.route('message', { path: '/:message_id' });
+    });
   });
 });
 

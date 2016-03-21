@@ -5,7 +5,15 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
+    sassOptions: {
+      includePaths: [
+        'bower_components/materialize/sass'
+      ]
+    }
   });
+
+  app.import('bower_components/js-md5/src/md5.js');
+  app.import('vendor/shims/md5.js');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.

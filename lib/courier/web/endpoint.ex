@@ -3,8 +3,24 @@ defmodule Courier.Web.Endpoint do
 
   alias Courier.{Adapters.Web, Web.Serializers.Message}
 
+  plug Plug.Static, at: "/", from: :courier_web
   plug :match
   plug :dispatch
+
+  get "/" do
+    base =
+      conn.script_name
+      |> Enum.join("/")
+
+    body =
+      Path.join([Application.app_dir(:courier_web), "priv/static", "index.html"])
+      |> File.read!()
+      |> String.replace(~s(<base href="/" />), ~s(<base href="/#{base}/" />))
+
+    IO.puts(body)
+
+    send_resp(conn, 200, body)
+  end
 
   get "/messages" do
     data =

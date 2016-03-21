@@ -1,0 +1,32 @@
+<nav>
+  <div class="nav-wrapper">
+    {{#md-nav-menu class="right" as |m|}}
+      {{#m.btn text=model.displayName as |b|}}
+        {{#b.dropdown as |d|}}
+          {{d.link-to model.displayName "account.inbox" account}}
+          <li class="divider"></li>
+          {{#each filteredAccounts as |account|}}
+            {{d.link-to account.displayName "account.inbox" account}}
+          {{/each}}
+          <li class="divider"></li>
+          {{d.link-to "Sign out" "index" class="blue-grey lighten-3"}}
+        {{/b.dropdown}}
+      {{/m.btn}}
+    {{/md-nav-menu}}
+  </div>
+</nav>
+<div class="row">
+  <div class="col s3">
+    {{#md-collection as |c|}}
+      {{#c.link-to "account.inbox" data-test="inbox"}}
+        Inbox <span class="badge">{{model.receivedMessages.length}}</span>
+      {{/c.link-to}}
+      {{#c.link-to "account.sent" data-test="sent"}}
+        Sent Mail <span class="badge">{{model.sentMessages.length}}</span>
+      {{/c.link-to}}
+    {{/md-collection}}
+  </div>
+  <div class="box col s9">
+    {{outlet}}
+  </div>
+</div>
