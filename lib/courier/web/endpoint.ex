@@ -39,6 +39,19 @@ defmodule Courier.Web.Endpoint do
     end
   end
 
+  get "/*path" do
+    base =
+      conn.script_name
+      |> Enum.join("/")
+
+    body =
+      Path.join([Application.app_dir(:courier_web), "priv/static", "index.html"])
+      |> File.read!()
+      |> String.replace(~s(<base href="/" />), ~s(<base href="/#{base}/" />))
+
+    send_resp(conn, 200, body)
+  end
+
   defp find_message(id) do
     Web.messages()
     |> Enum.find(fn(message) ->
