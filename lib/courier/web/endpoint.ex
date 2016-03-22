@@ -17,8 +17,6 @@ defmodule Courier.Web.Endpoint do
       |> File.read!()
       |> String.replace(~s(<base href="/" />), ~s(<base href="/#{base}/" />))
 
-    IO.puts(body)
-
     send_resp(conn, 200, body)
   end
 
