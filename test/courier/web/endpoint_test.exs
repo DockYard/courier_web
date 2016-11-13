@@ -3,11 +3,14 @@ defmodule Courier.Web.EndpointTest do
   use Plug.Test
 
   alias Courier.{Adapters.Web, Web.Endpoint}
+  @adapter Web
 
   setup do
-    Web.init([])
+    {:ok, pid} =
+      [Supervisor.Spec.supervisor(@adapter, [[]])]
+      |> Supervisor.start_link(strategy: :one_for_one)
 
-    :ok
+    {:ok, pid: pid}
   end
 
   @message1 Mail.build()

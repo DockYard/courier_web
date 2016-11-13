@@ -21,9 +21,10 @@ defmodule Courier.Web.Endpoint do
   end
 
   get "/messages" do
+    messages = Web.messages()
     data =
-      Web.messages()
-      |> Message.format(conn)
+      Message
+      |> JaSerializer.format(messages, conn)
       |> Poison.encode!()
 
     send_resp(conn, 200, data)

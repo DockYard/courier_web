@@ -1,8 +1,6 @@
 defmodule Courier.Web.Serializers.Account do
   use JaSerializer
 
-  alias Courier.Web.Serializers.Message
-
   attributes [:name, :email]
 
   def id(%{account: {_name, email}}, _conn), do: email

@@ -42,10 +42,10 @@ defmodule CourierWeb.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:courier, "~> 0.0.2"},
+    [{:courier, "~> 0.1.0"},
      {:uuid, "> 0.0.0"},
      {:plug, "> 0.0.0"},
-     {:ja_serializer, "> 0.0.0"},
+     {:ja_serializer, "~> 0.11.0"},
      {:poison, "> 0.0.0"}
      ]
   end
