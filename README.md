@@ -2,7 +2,7 @@
 
 Web Adapter, Endpoint, and Client application for [Courier](https://github.com/DockYard/courier).
 
-[![Build Status](https://secure.travis-ci.org/DockYard/elixir-courier_web.svg?branch=master)](http://travis-ci.org/DockYard/elixir-courier_web)
+[![Build Status](https://secure.travis-ci.org/DockYard/courier_web.svg?branch=master)](http://travis-ci.org/DockYard/courier_web)
 
 ## How to use:
 
