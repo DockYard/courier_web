@@ -1,9 +1,14 @@
 defmodule Courier.Adapters.WebTest do
   use ExUnit.Case
 
+  @adapter Courier.Adapters.Web
+
   setup do
-    Courier.Adapters.Web.init([])
-    :ok
+    {:ok, pid} =
+      [Supervisor.Spec.supervisor(@adapter, [[]])]
+      |> Supervisor.start_link(strategy: :one_for_one)
+
+    {:ok, pid: pid}
   end
 
   @message1 Mail.build()
